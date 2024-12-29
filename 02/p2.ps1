@@ -30,7 +30,6 @@ function Test-Row {
     [string]$row
   )
     
-  # Convert string to int array
   $nums = $row -split ' ' | ForEach-Object { [int]$_ }
     
   # First check if the sequence is safe without any removals
@@ -38,7 +37,7 @@ function Test-Row {
     return $true
   }
     
-  # If not safe, try removing each number once (Problem Dampener)
+  # If not safe, try removing each number
   for ($i = 0; $i -lt $nums.Length; $i++) {
     $dampened = [System.Collections.ArrayList]@($nums)
     $dampened.RemoveAt($i)
